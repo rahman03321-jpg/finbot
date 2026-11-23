@@ -1,0 +1,46 @@
+{
+  "name": "finbot",
+  "version": "1.0.0",
+  "description": "Bot Telegram + Mini App pencatatan keuangan usaha (kas, omzet, laba rugi, stok) di Cloudflare Workers + D1",
+  "private": true,
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/judienmz/Catetin"
+  },
+  "scripts": {
+    "dev": "npm run build && wrangler dev",
+    "dev:miniapp": "vite --config miniapp/vite.config.ts",
+    "build": "vite build --config miniapp/vite.config.ts",
+    "deploy": "npm run build && wrangler deploy",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p miniapp",
+    "test": "vitest run"
+  },
+  "cloudflare": {
+    "bindings": {
+      "BOT_TOKEN": {
+        "description": "Token bot Telegram dari [@BotFather](https://t.me/BotFather): ketik /newbot, ikuti langkahnya, lalu salin token yang diberikan (contoh: 123456789:AAH...)."
+      },
+      "SETUP_KEY": {
+        "description": "Password buatanmu sendiri (minimal 12 karakter) untuk membuka halaman /setup. Simpan baik-baik."
+      },
+      "DB": {
+        "description": "Database D1 untuk semua data keuangan. Biarkan dibuat otomatis."
+      }
+    }
+  },
+  "dependencies": {
+    "grammy": "^1.46.0",
+    "hono": "^4.13.19",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "^1.8.3",
+    "@cloudflare/workers-types": "^5.20261116.1",
+    "preact": "^10.29.8",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.8",
+    "vitest": "^4.1.12",
+    "wrangler": "^4.163.0"
+  }
+}

@@ -1,0 +1,4 @@
+# Token bot dari @BotFather (ketik /newbot di Telegram)
+BOT_TOKEN=
+# Password halaman /setup, buatan sendiri, minimal 12 karakter
+SETUP_KEY=
